@@ -1,0 +1,14 @@
+{
+  "presets": [
+    {
+      "name": "Classic Hunt (Ages 6–10)",
+      "description": "The original nine-question museum hunt.",
+      "questionIds": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
+    {
+      "name": "Quick Hunt (5 stops)",
+      "description": "A shorter visit — five questions across the museum.",
+      "questionIds": [1, 4, 5, 8, 9]
+    }
+  ]
+}

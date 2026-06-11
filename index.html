@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scavenger Hunt Builder — College Park Aviation Museum</title>
+  <link rel="stylesheet" href="css/screen.css">
+</head>
+<!-- data-page lets main.js branch per page: document.body.dataset.page -->
+<body data-page="builder">
+
+  <header class="site-header">
+    <h1>Scavenger Hunt Builder</h1>
+    <p class="tagline">College Park Aviation Museum — build a printable hunt in under a minute.</p>
+  </header>
+
+  <main>
+
+    <!-- ================================================================
+         STEP 0 — Already have a code? Rebuild that exact hunt.
+         JS: on #load-code-btn click, decodeHunt(#code-input.value);
+             if valid, go to hunt.html?code=...; else show #code-error.
+         ================================================================ -->
+    <section class="card" id="code-section">
+      <h2>Have a hunt code?</h2>
+      <p>Codes are printed at the bottom of every hunt. Enter one to rebuild the exact same hunt.</p>
+      <div class="row">
+        <input type="text" id="code-input" placeholder="CPAM1-XXXXX" autocomplete="off">
+        <button type="button" id="load-code-btn">Load Hunt</button>
+      </div>
+      <p class="error" id="code-error" hidden>That code doesn’t look right — check it against the printed sheet.</p>
+    </section>
+
+    <!-- ================================================================
+         STEP 1 — Presets.
+         JS: fetch data/presets.json; clone #preset-template per preset
+             into #preset-list; click → encodeHunt(preset.questionIds)
+             → hunt.html?code=...
+         ================================================================ -->
+    <section class="card" id="preset-section">
+      <h2>Start from a preset</h2>
+      <p>Ready-made hunts assembled by the museum.</p>
+      <div id="preset-list" class="preset-grid">
+        <!-- populated by JS -->
+      </div>
+    </section>
+
+    <!-- ================================================================
+         STEP 2 — Build your own.
+         JS: fetch data/questions.json.
+           - Clone #category-template per category into #category-controls.
+           - Clone #question-template per question into #question-list
+             (set the find text, category tag, and checkbox value = id).
+           - Checked boxes are PINNED questions (always included).
+           - Category counts request that many RANDOM extras per category.
+           - #generate-btn → generateHunt({ pinnedIds, categoryCounts, pool })
+             → encodeHunt(ids) → hunt.html?code=...
+           - Keep #selection-summary live, e.g. "3 pinned + 4 random = 7 questions".
+             Warn above 9: only 9 fixed-size bubbles fit the page.
+         ================================================================ -->
+    <section class="card" id="builder-section">
+      <h2>Build your own hunt</h2>
+
+      <h3>1. Random questions per category</h3>
+      <div id="category-controls" class="category-grid">
+        <!-- populated by JS -->
+      </div>
+
+      <h3>2. Hand-pick specific questions <span class="muted">(optional — these are always included)</span></h3>
+      <div id="question-list" class="question-list">
+        <!-- populated by JS -->
+      </div>
+
+      <div class="generate-row">
+        <p id="selection-summary" class="muted">0 questions selected</p>
+        <button type="button" id="generate-btn" class="primary">Generate Hunt ✈</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>College Park Aviation Museum · A Smithsonian Affiliate · M-NCPPC Parks &amp; Recreation</p>
+  </footer>
+
+  <!-- ====== Templates for the JS to clone ====== -->
+
+  <template id="preset-template">
+    <button type="button" class="preset-card" data-preset-name="">
+      <span class="preset-name"></span>
+      <span class="preset-description muted"></span>
+      <span class="preset-count muted"></span>
+    </button>
+  </template>
+
+  <template id="category-template">
+    <label class="category-control">
+      <span class="category-name"></span>
+      <input type="number" class="category-count" min="0" max="9" value="0" data-category="">
+    </label>
+  </template>
+
+  <template id="question-template">
+    <label class="question-row">
+      <input type="checkbox" class="question-pin" value="">
+      <span class="question-find"></span>
+      <span class="question-category tag"></span>
+    </label>
+  </template>
+
+  <!-- YOUR JS — entry point. See ARCHITECTURE.md for the function signatures
+       (seed.js: encodeHunt/decodeHunt, generator.js: generateHunt). -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

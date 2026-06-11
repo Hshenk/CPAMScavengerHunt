@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Answer Sheet — College Park Aviation Museum Scavenger Hunt</title>
+  <link rel="stylesheet" href="css/hunt.css">
+</head>
+<!-- Identical layout to hunt.html page 1; the only difference is that every
+     bubble uses the answer export (q<id>-a.png) instead of q<id>.png. -->
+<!-- data-page lets main.js branch per page: document.body.dataset.page -->
+<body data-page="answers">
+
+  <div class="toolbar">
+    <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+    <a id="hunt-link" class="secondary" href="hunt.html">View Hunt</a>
+    <a class="secondary" href="index.html">← Back to Builder</a>
+    <span class="toolbar-code">Code: <span id="toolbar-code-value">CPAM1-EXAMPLE</span></span>
+  </div>
+
+  <!-- HARDCODED SAMPLE — render.js clears the columns and clones
+       #bubble-template with the q<id>-a.png sources. -->
+  <section class="sheet hunt-page">
+    <div class="hunt-grid">
+
+      <div class="bubble-col" id="bubbles-left">
+        <header class="hunt-header">
+          <img src="assets/header-lockup.png"
+               alt="College Park Aviation Museum — Scavenger Hunt">
+          <p class="ages">Recommended for ages 6–10</p>
+        </header>
+
+        <article class="bubble">
+          <span class="bubble-number">2</span>
+          <img class="bubble-img" src="assets/questions/q2-a.png"
+               alt="Answer 2: elevator, rudder, or wing warping">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">4</span>
+          <img class="bubble-img" src="assets/questions/q4-a.png"
+               alt="Answer 4: helicopter">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">6</span>
+          <img class="bubble-img" src="assets/questions/q6-a.png"
+               alt="Answer 6: her feet">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">8</span>
+          <img class="bubble-img" src="assets/questions/q8-a.png"
+               alt="Answer 8: Baltimore &amp; Ohio Railroad">
+        </article>
+      </div>
+
+      <div class="bubble-col" id="bubbles-right">
+        <article class="bubble">
+          <span class="bubble-number">1</span>
+          <img class="bubble-img" src="assets/questions/q1-a.png"
+               alt="Answer 1: 1903">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">3</span>
+          <img class="bubble-img" src="assets/questions/q3-a.png"
+               alt="Answer 3: Bessie Coleman">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">5</span>
+          <img class="bubble-img" src="assets/questions/q5-a.png"
+               alt="Answer 5: thrust">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">7</span>
+          <img class="bubble-img" src="assets/questions/q7-a.png"
+               alt="Answer 7: Boston">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">9</span>
+          <img class="bubble-img" src="assets/questions/q9-a.png"
+               alt="Answer 9: heart, wings, propeller">
+        </article>
+      </div>
+    </div>
+
+    <footer class="brand-footer">
+      <img src="assets/logo-museum.png" alt="College Park Aviation Museum">
+      <img src="assets/logo-smithsonian.png" alt="Smithsonian Affiliate">
+      <span class="footer-spacer"></span>
+      <span class="hunt-code">Hunt Code: <span id="hunt-code">CPAM1-EXAMPLE</span></span>
+      <span class="footer-spacer"></span>
+      <img src="assets/logo-parks.png" alt="M-NCPPC Parks and Recreation">
+    </footer>
+  </section>
+
+  <template id="bubble-template">
+    <article class="bubble">
+      <span class="bubble-number"></span>
+      <img class="bubble-img" src="" alt="">
+    </article>
+  </template>
+
+  <!-- YOUR JS: identical flow to hunt.html but img src = q<id>-a.png
+       (renderHunt with showAnswers: true), no map step, and #hunt-link
+       points at hunt.html?code=<same code>. -->
+  <!-- Single entry point: main.js imports seed.js / render.js itself. -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+/* ==========================================================================
+   screen.css — builder UI (index.html). Print styling lives in hunt.css.
+   ========================================================================== */
+
+:root {
+  --blue:  #6fc2ea;
+  --green: #8fc97f;
+  --red:   #b3271e;
+  --brown: #5c4632;
+  --paper: #faf8f4;
+  --ink:   #1a1a1a;
+}
+
+@font-face {
+  font-family: "Glacial Indifference";
+  src: url("../assets/fonts/GlacialIndifference-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Glacial Indifference";
+  src: url("../assets/fonts/GlacialIndifference-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Glacial Indifference", "Trebuchet MS", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.site-header {
+  background: var(--blue);
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem 1.5rem;
+}
+.site-header h1 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.site-header .tagline { margin: 0.4rem 0 0; font-weight: 700; }
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+}
+.card h2 { margin: 0 0 0.25rem; color: var(--brown); }
+.card h3 { margin: 1.25rem 0 0.5rem; color: var(--brown); }
+.muted { color: #6b6b6b; font-weight: 400; }
+.error { color: var(--red); font-weight: 700; }
+.tag {
+  background: var(--green);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+}
+
+.row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+input[type="text"],
+input[type="number"] {
+  font: inherit;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid #cfc9bf;
+  border-radius: 10px;
+  background: #fff;
+}
+input[type="text"]:focus,
+input[type="number"]:focus { outline: 2px solid var(--blue); border-color: var(--blue); }
+#code-input { text-transform: uppercase; letter-spacing: 0.06em; flex: 1; min-width: 12rem; }
+
+button {
+  font: inherit;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  padding: 0.55rem 1.2rem;
+  background: var(--brown);
+  color: #fff;
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.12); }
+button.primary {
+  background: var(--red);
+  font-size: 1.1rem;
+  padding: 0.7rem 1.6rem;
+}
+
+/* Presets */
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.8rem;
+}
+.preset-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+  background: #fff;
+  color: var(--ink);
+  border: 2px solid var(--blue);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+}
+.preset-card:hover { background: #eaf6fd; filter: none; }
+.preset-card .preset-name { font-weight: 700; color: var(--brown); }
+
+/* Category counts */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.6rem;
+}
+.category-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  background: var(--paper);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+.category-control input { width: 4.2rem; }
+
+/* Question picker */
+.question-list {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #e4ded4;
+  border-radius: 12px;
+  max-height: 22rem;
+  overflow-y: auto;
+}
+.question-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+}
+.question-row:nth-child(even) { background: var(--paper); }
+.question-row:hover { background: #eaf6fd; }
+.question-row .question-find { flex: 1; }
+.question-row input[type="checkbox"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: var(--red);
+}
+
+.generate-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.site-footer {
+  text-align: center;
+  color: #6b6b6b;
+  padding: 1rem 1rem 2rem;
+}

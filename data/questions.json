@@ -1,0 +1,68 @@
+{
+  "categories": ["history", "planes", "people", "science"],
+  "questions": [
+    {
+      "id": 1,
+      "title": "Kitty Hawk — first flight year",
+      "category": "history",
+      "locationId": "lobby",
+      "answer": "1903"
+    },
+    {
+      "id": 2,
+      "title": "Wright B — name one control",
+      "category": "planes",
+      "locationId": "main-gallery-wb",
+      "answer": "elevator, rudder, or wing warping"
+    },
+    {
+      "id": 3,
+      "title": "Jenny — first African American female pilot",
+      "category": "people",
+      "locationId": "main-gallery-jn",
+      "answer": "Bessie Coleman"
+    },
+    {
+      "id": 4,
+      "title": "Berliner — what type of aircraft?",
+      "category": "planes",
+      "locationId": "main-gallery-br",
+      "answer": "helicopter"
+    },
+    {
+      "id": 5,
+      "title": "Propellers — which force of flight?",
+      "category": "science",
+      "locationId": "flight-school",
+      "answer": "thrust"
+    },
+    {
+      "id": 6,
+      "title": "Ercoupe — how does Jessica Cox steer?",
+      "category": "people",
+      "locationId": "main-gallery-erco",
+      "answer": "her feet"
+    },
+    {
+      "id": 7,
+      "title": "Columbia Air Center — where John Greene learned to fly",
+      "category": "people",
+      "locationId": "gallery-1",
+      "answer": "Boston"
+    },
+    {
+      "id": 8,
+      "title": "Lakeland exhibit — famous train line",
+      "category": "history",
+      "locationId": "special-exhibition",
+      "answer": "Baltimore & Ohio Railroad"
+    },
+    {
+      "id": 9,
+      "title": "Latinas in Aviation — three parts of the LIA logo",
+      "category": "history",
+      "locationId": "gallery-2",
+      "answer": "heart, wings, propeller"
+    }
+  ]
+}

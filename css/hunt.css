@@ -1,0 +1,280 @@
+/* ==========================================================================
+   hunt.css — printable hunt pages (hunt.html + answers.html)
+   Page 1: question bubbles  |  Page 2: hint map  |  print rules at bottom
+   ========================================================================== */
+
+/* ---- Brand variables (tune everything here) ---- */
+:root {
+  --blue:    #80d4ff;   /* bubble fill */
+  --green:   #5fb359;   /* bubble fill */
+  --gray:    #cfcfcf;   /* bubble fill */
+  --red:     #b3271e;   /* stamp headings */
+  --brown:   #5c4632;   /* museum name text */
+  --gold:    #f2b01e;   /* map stars */
+  --ink:     #1a1a1a;
+
+  /* Bubble slot = 3.8in × 1.7in. Matches the Canva template page size —
+     export at 300 DPI gives 1140 × 510 px PNGs. Uniform for every bubble. */
+  --bubble-w:   3.80in;
+  --bubble-h:   1.70in;
+  --bubble-gap: 0.14in;
+  --bubble-radius: 0.30in;
+
+  --page-pad-v: 0.30in;
+  --page-pad-h: 0.35in;
+}
+
+/* ---- Fonts ----
+   Glacial Indifference (SIL OFL). Drop the woff2 files into assets/fonts/.
+   Optional "headline.woff2" for the red stamp style; falls back to bold Glacial. */
+@font-face {
+  font-family: "Glacial Indifference";
+  src: url("../assets/fonts/GlacialIndifference-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Glacial Indifference";
+  src: url("../assets/fonts/GlacialIndifference-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hunt Headline";
+  src: url("../assets/fonts/headline.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #e8e6e1;            /* screen-only backdrop; print overrides */
+  font-family: "Glacial Indifference", "Trebuchet MS", Arial, sans-serif;
+  font-size: 12pt;                 /* company standard: nothing smaller */
+  color: var(--ink);
+}
+
+.stamp {
+  font-family: "Hunt Headline", "Glacial Indifference", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--red);
+  letter-spacing: 0.02em;
+}
+
+/* ---- Screen toolbar (never prints) ---- */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 16px;
+  background: #fff;
+  border-bottom: 2px solid var(--blue);
+}
+.toolbar a,
+.toolbar button {
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  background: var(--blue);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.toolbar a.secondary,
+.toolbar button.secondary { background: var(--brown); }
+.toolbar .toolbar-code { margin-left: auto; font-weight: 700; color: var(--brown); }
+
+/* ---- The printable sheet ---- */
+.sheet {
+  width: 8.5in;
+  height: 11in;
+  padding: var(--page-pad-v) var(--page-pad-h);
+  margin: 0.3in auto;
+  background: #fff;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3); /* screen preview only */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   PAGE 1 — question bubbles
+   ========================================================================== */
+
+.hunt-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.20in; /* 2 × 3.8in columns + 0.20in gap + 2 × 0.35in padding = 8.5in */
+  min-height: 0;
+}
+
+.bubble-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bubble-gap);
+}
+/* Center the right column's stack vertically: it starts a little below the
+   top of the header art instead of running all the way up. */
+#bubbles-right { justify-content: center; }
+
+/* Header lockup sits at the top of the LEFT column (right column starts higher,
+   giving the staggered look from the example sheet). */
+.hunt-header { text-align: left; padding-bottom: 0.05in; }
+.hunt-header img {
+  width: 100%;
+  max-height: 1.9in;
+  object-fit: contain;
+  object-position: left top;
+}
+.hunt-header .ages {
+  margin: 0.04in 0 0 0.13in;        /* lines up with the bubble art's left edge */
+  color: var(--brown);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---- Bubble: CSS-drawn colored box + transparent Canva PNG + number ----
+   The rounded colored box is drawn HERE; the Canva export (q<id>.png /
+   q<id>-a.png, 3.8in × 1.7in, transparent background) holds only the
+   question content and layers on top. The template keeps the top-left
+   ~0.5in square clear of artwork so the number badge never covers anything. */
+.bubble {
+  position: relative;
+  height: var(--bubble-h);          /* fixed slot, regardless of image */
+  flex: 0 0 var(--bubble-h);
+  border-radius: var(--bubble-radius);
+  overflow: hidden;
+}
+
+/* Slot colors are FIXED by page position so the sheet always looks balanced
+   no matter which questions land where. Positions read 1–9 left-to-right:
+   right column holds 1,3,5,7,9 and left column holds 2,4,6,8. */
+#bubbles-right .bubble:nth-of-type(1) { background: var(--blue); }
+#bubbles-right .bubble:nth-of-type(2) { background: var(--green); }
+#bubbles-right .bubble:nth-of-type(3) { background: var(--blue); }
+#bubbles-right .bubble:nth-of-type(4) { background: #fff; border: 2.5px solid var(--ink); }
+#bubbles-right .bubble:nth-of-type(5) { background: var(--gray); }
+#bubbles-left  .bubble:nth-of-type(1) { background: var(--gray); }
+#bubbles-left  .bubble:nth-of-type(2) { background: #fff; border: 2.5px solid var(--ink); }
+#bubbles-left  .bubble:nth-of-type(3) { background: var(--green); }
+#bubbles-left  .bubble:nth-of-type(4) { background: var(--blue); }
+.bubble-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;              /* off-spec exports letterbox, never distort */
+}
+.bubble-number {
+  position: absolute;
+  /* The Canva bubble art is inset ~0.13in inside the PNG canvas with a big
+     corner radius; these offsets nest the badge inside that rounded corner. */
+  top: 0.15in;
+  left: 0.15in;
+  width: 0.35in;
+  height: 0.35in;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   PAGE 2 — hint map
+   ========================================================================== */
+
+.map-page .map-title {
+  margin: 0;
+  text-align: center;
+  font-size: 30pt;
+}
+.map-page .map-subtitle {
+  margin: 0 0 0.12in;
+  text-align: center;
+}
+.floor-label {
+  margin: 0.10in 0 0.05in;
+  font-size: 17pt;
+}
+.map-floor {
+  position: relative;               /* anchors the absolutely-positioned stars */
+}
+.map-floor img { width: 100%; display: block; }
+.map-floor.ground    { min-height: 3.4in; }
+.map-floor.mezzanine { min-height: 2.2in; }
+
+.star {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 20pt;
+  color: var(--gold);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.35);
+  line-height: 1;
+}
+.star[hidden] { display: none; }
+
+.name-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.25in;
+  margin-top: auto;
+  padding: 0.15in 0.2in 0.25in;
+}
+.name-row .stamp { font-size: 34pt; line-height: 1; }
+.name-row .name-line {
+  flex: 1;
+  border-bottom: 4px solid var(--red);
+  height: 0.5in;
+}
+
+/* ==========================================================================
+   Shared footer — logos + hunt code
+   ========================================================================== */
+
+.brand-footer {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.25in;
+  padding-top: 0.10in;
+}
+.brand-footer img { height: 0.55in; object-fit: contain; }
+.brand-footer .footer-spacer { flex: 1; }
+.hunt-code {
+  text-align: center;
+  color: var(--brown);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Print
+   ========================================================================== */
+
+@page { size: letter portrait; margin: 0; }
+
+@media print {
+  body { background: #fff; }
+  .toolbar { display: none; }
+  .sheet {
+    margin: 0;
+    box-shadow: none;
+    break-after: page;
+  }
+  .sheet:last-child { break-after: auto; }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;     /* keep bubble fills and stars in print */
+  }
+}

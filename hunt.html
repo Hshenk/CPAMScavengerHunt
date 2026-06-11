@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scavenger Hunt — College Park Aviation Museum</title>
+  <link rel="stylesheet" href="css/hunt.css">
+</head>
+<!-- data-page lets main.js branch per page: document.body.dataset.page -->
+<body data-page="hunt">
+
+  <!-- Screen-only controls; hidden by print CSS -->
+  <div class="toolbar">
+    <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
+    <a id="answers-link" class="secondary" href="answers.html">View Answer Sheet</a>
+    <a class="secondary" href="index.html">← Back to Builder</a>
+    <span class="toolbar-code">Code: <span id="toolbar-code-value">CPAM1-EXAMPLE</span></span>
+  </div>
+
+  <!-- ====================================================================
+       PAGE 1 — Question bubbles
+       Each bubble is a finished Canva PNG (assets/questions/q<id>.png,
+       3.8in × 1.7in @ 300 DPI = 1140×510 px); the page only overlays the
+       question number. The nine below are HARDCODED SAMPLES so print
+       styling can be verified before any JS exists.
+       render.js: clear #bubbles-left / #bubbles-right, clone
+       #bubble-template per question, set the img src + number, and append
+       alternating right, left, right, left… (odd positions right, even
+       left — right holds 5, left holds 4 below the header). Bubble colors
+       are fixed per position by CSS; JS never sets them.
+       ==================================================================== -->
+  <section class="sheet hunt-page">
+    <div class="hunt-grid">
+
+      <div class="bubble-col" id="bubbles-left">
+        <header class="hunt-header">
+          <img src="assets/header-lockup.png"
+               alt="College Park Aviation Museum — Scavenger Hunt">
+          <p class="ages">Recommended for ages 6–10</p>
+        </header>
+
+        <article class="bubble">
+          <span class="bubble-number">2</span>
+          <img class="bubble-img" src="assets/questions/q2.png"
+               alt="Question 2: Wright B — name one control">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">4</span>
+          <img class="bubble-img" src="assets/questions/q4.png"
+               alt="Question 4: Berliner — what type of aircraft?">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">6</span>
+          <img class="bubble-img" src="assets/questions/q6.png"
+               alt="Question 6: Ercoupe — how does Jessica Cox steer?">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">8</span>
+          <img class="bubble-img" src="assets/questions/q8.png"
+               alt="Question 8: Lakeland exhibit — famous train line">
+        </article>
+      </div>
+
+      <div class="bubble-col" id="bubbles-right">
+        <article class="bubble">
+          <span class="bubble-number">1</span>
+          <img class="bubble-img" src="assets/questions/q1.png"
+               alt="Question 1: Kitty Hawk — first flight year">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">3</span>
+          <img class="bubble-img" src="assets/questions/q3.png"
+               alt="Question 3: Jenny — first African American female pilot">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">5</span>
+          <img class="bubble-img" src="assets/questions/q5.png"
+               alt="Question 5: Propellers — which force of flight?">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">7</span>
+          <img class="bubble-img" src="assets/questions/q7.png"
+               alt="Question 7: Columbia Air Center — where John Greene learned to fly">
+        </article>
+
+        <article class="bubble">
+          <span class="bubble-number">9</span>
+          <img class="bubble-img" src="assets/questions/q9.png"
+               alt="Question 9: Latinas in Aviation — three parts of the LIA logo">
+        </article>
+      </div>
+    </div>
+
+    <footer class="brand-footer">
+      <img src="assets/logo-museum.png" alt="College Park Aviation Museum">
+      <img src="assets/logo-smithsonian.png" alt="Smithsonian Affiliate">
+      <span class="footer-spacer"></span>
+      <span class="hunt-code">Hunt Code: <span id="hunt-code">CPAM1-EXAMPLE</span></span>
+      <span class="footer-spacer"></span>
+      <img src="assets/logo-parks.png" alt="M-NCPPC Parks and Recreation">
+    </footer>
+  </section>
+
+  <!-- ====================================================================
+       PAGE 2 — Hint map
+       One .star element exists per entry in data/locations.json, positioned
+       by its percent coordinates. All start hidden except the sample hunt's
+       locations. render.js: remove the `hidden` attribute for each rendered
+       question's locationId (and hide the rest).
+       ==================================================================== -->
+  <section class="sheet map-page">
+    <h1 class="map-title stamp">Want a Hint?</h1>
+    <p class="map-subtitle">Here are a few places to look</p>
+
+    <h2 class="floor-label stamp">Ground Floor</h2>
+    <div class="map-floor ground">
+      <img src="assets/map-ground.png" alt="Ground floor map">
+      <span class="star" data-location="lobby"               style="left: 17%; top: 72%;">★</span>
+      <span class="star" data-location="front-desk"          style="left: 11%; top: 55%;" hidden>★</span>
+      <span class="star" data-location="gift-shop"           style="left: 16%; top: 28%;" hidden>★</span>
+      <span class="star" data-location="main-gallery-wb"   style="left: 37%; top: 42%;">★</span>
+      <span class="star" data-location="main-gallery-jn" style="left: 56%; top: 28%;">★</span>
+      <span class="star" data-location="main-gallery-br" style="left: 65%; top: 28%;">★</span>
+      <span class="star" data-location="main-gallery-erco"   style="left: 88%; top: 40%;">★</span>
+      <span class="star" data-location="gallery-1"           style="left: 51%; top: 65%;">★</span>
+      <span class="star" data-location="flight-school"       style="left: 64%; top: 67%;">★</span>
+      <span class="star" data-location="gallery-2"           style="left: 84%; top: 68%;">★</span>
+    </div>
+
+    <h2 class="floor-label stamp">Mezzanine — Second Floor</h2>
+    <div class="map-floor mezzanine">
+      <img src="assets/map-mezzanine.png" alt="Mezzanine map">
+      <span class="star" data-location="special-exhibition" style="left: 68%; top: 70%;">★</span>
+    </div>
+
+    <div class="name-row">
+      <span class="stamp">Name</span>
+      <span class="name-line"></span>
+    </div>
+
+    <footer class="brand-footer">
+      <img src="assets/logo-museum.png" alt="College Park Aviation Museum">
+      <img src="assets/logo-smithsonian.png" alt="Smithsonian Affiliate">
+      <span class="footer-spacer"></span>
+      <span class="hunt-code">Hunt Code: <span id="hunt-code-map">CPAM1-EXAMPLE</span></span>
+      <span class="footer-spacer"></span>
+      <img src="assets/logo-parks.png" alt="M-NCPPC Parks and Recreation">
+    </footer>
+  </section>
+
+  <!-- ====================================================================
+       Template for render.js — clone one per question.
+       Hunt page:    img src = assets/questions/q<id>.png
+       Answer sheet: img src = assets/questions/q<id>-a.png
+       Set alt from the question's title in questions.json.
+       ==================================================================== -->
+  <template id="bubble-template">
+    <article class="bubble">
+      <span class="bubble-number"></span>
+      <img class="bubble-img" src="" alt="">
+    </article>
+  </template>
+  <!-- (No color class needed on cloned bubbles — column position decides it.) -->
+
+  <!-- YOUR JS (see ARCHITECTURE.md):
+       1. Read ?code= from location.search, decodeHunt() it (js/seed.js).
+       2. Fetch data/questions.json + data/locations.json.
+       3. renderHunt(questions, { showAnswers: false }) — clear the sample
+          bubbles, clone #bubble-template into the columns (order R,L,R,L,R,L,L,R,R).
+       4. renderMap(questions, locations) — toggle .star[hidden].
+       5. Set #hunt-code, #hunt-code-map, #toolbar-code-value, and point
+          #answers-link at answers.html?code=<same code>.            -->
+  <!-- Single entry point: main.js imports seed.js / render.js itself. -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
