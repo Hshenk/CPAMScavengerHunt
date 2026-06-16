@@ -24,13 +24,28 @@ export function renderHunt(questions, showAnswers) {
     });
 }
 
-// displays stars on the map based on what questions we were given
-// They are already placed, just hidden
-export function renderMap(questions) {
+// places stars on the map based on what questions and locations we're given
+export function renderMap(questions, locations) {
+    // Stores the location ids and locations for each desired location
+    const byId = new Map(locations.map(loc => [loc.id, loc]));
     const wanted = new Set(questions.map(q => q.locationId));
 
-    document.querySelectorAll(".star").forEach(star => {
-        // star.dataset.location reads the data-location attribute
-        star.hidden = !wanted.has(star.dataset.location);
-    });
+    // Clear any stars from past generations 
+    document.querySelectorAll(".star").forEach(star => star.remove());
+
+    // Loop over our wanted locations and place them
+    for (const id of wanted) {
+        const loc = byId.get(id);
+        if (!loc) continue; // skip if we can't find a matching location
+
+        const floor = document.querySelector(`.map-floor[data-floor="${loc.floor}"]`);
+        if (!floor) continue;
+
+        const star = document.createElement("span");
+        star.className = "star";
+        star.textContent = "★";
+        star.style.left = `${loc.x}%`;
+        star.style.top = `${loc.y}%`;
+        floor.appendChild(star);
+    }
 }

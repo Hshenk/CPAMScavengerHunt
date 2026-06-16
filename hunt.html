@@ -109,34 +109,26 @@
 
   <!-- ====================================================================
        PAGE 2 — Hint map
-       One .star element exists per entry in data/locations.json, positioned
-       by its percent coordinates. All start hidden except the sample hunt's
-       locations. render.js: remove the `hidden` attribute for each rendered
-       question's locationId (and hide the rest).
+       render.js builds the stars: it collects the unique locationIds used by
+       this hunt's questions, looks each up in data/locations.json for its
+       floor + x/y, and creates one <span class="star"> per location at those
+       coordinates inside the matching .map-floor[data-floor] container.
        ==================================================================== -->
   <section class="sheet map-page">
     <h1 class="map-title stamp">Want a Hint?</h1>
     <p class="map-subtitle">Here are a few places to look</p>
 
+    <!-- Stars are created by render.js from data/locations.json — positions
+         (x/y) and the floor each belongs to live there now. data-floor lets
+         render.js drop each star into the matching map. -->
     <h2 class="floor-label stamp">Ground Floor</h2>
-    <div class="map-floor ground">
+    <div class="map-floor ground" data-floor="ground">
       <img src="assets/map-ground.png" alt="Ground floor map">
-      <span class="star" data-location="lobby"               style="left: 17%; top: 72%;">★</span>
-      <span class="star" data-location="front-desk"          style="left: 11%; top: 55%;" hidden>★</span>
-      <span class="star" data-location="gift-shop"           style="left: 16%; top: 28%;" hidden>★</span>
-      <span class="star" data-location="main-gallery-wb"   style="left: 37%; top: 42%;">★</span>
-      <span class="star" data-location="main-gallery-jn" style="left: 56%; top: 28%;">★</span>
-      <span class="star" data-location="main-gallery-br" style="left: 65%; top: 28%;">★</span>
-      <span class="star" data-location="main-gallery-erco"   style="left: 88%; top: 40%;">★</span>
-      <span class="star" data-location="gallery-1"           style="left: 51%; top: 65%;">★</span>
-      <span class="star" data-location="flight-school"       style="left: 64%; top: 67%;">★</span>
-      <span class="star" data-location="gallery-2"           style="left: 84%; top: 68%;">★</span>
     </div>
 
     <h2 class="floor-label stamp">Mezzanine — Second Floor</h2>
-    <div class="map-floor mezzanine">
+    <div class="map-floor mezzanine" data-floor="mezzanine">
       <img src="assets/map-mezzanine.png" alt="Mezzanine map">
-      <span class="star" data-location="special-exhibition" style="left: 68%; top: 70%;">★</span>
     </div>
 
     <div class="name-row">

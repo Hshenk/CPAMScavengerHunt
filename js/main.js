@@ -43,7 +43,11 @@ async function initHuntPage(page) {
     const questions = ids.map(id => byId.get(id));
 
     renderHunt(questions, page === "answers");
-    if (page === "hunt") renderMap(questions);
+    if (page === "hunt") {
+        const locations = await
+        fetch("data/locations.json").then(r => r.json());
+        renderMap(questions, locations);
+    }
 
     // Always display the canonical code
     const canonical = encodeHunt(ids);
