@@ -153,7 +153,24 @@ function getCategoryCounts() {
 
 function updateSummary() {
     const pinned = getPinnedIds().length;
-    const random = Object.values(getCategoryCounts()).reduce((a, b) => a + b, 0);
+
+    // Calculate how many pinned we have per category
+    const pinnedPerCat = {};
+    document.querySelectorAll(".question-pin:checked").forEach(box =>{
+        const cat = box.closest(".question-row").querySelector(".question-category").textContent;
+        pinnedPerCat[cat] = (pinnedPerCat[cat] || 0) + 1;
+    });
+
+
+    let random = 0;
+
+    document.querySelectorAll(".category-count").forEach(input => {
+        const requested = Number(input.value);
+        const available = Number(input.max);
+        const room = available - (pinnedPerCat[input.dataset.category] || 0);
+        random += Math.max(0, Math.min(requested, room));
+    });
+
     const total = pinned + random;
 
     const summary = document.getElementById("selection-summary");

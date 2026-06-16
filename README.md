@@ -49,12 +49,3 @@ print dialog so the bubbles fill edge to edge.
    branch", Branch = `main`, folder = `/ (root)`. Save.
 3. After a minute the site is live at `https://<username>.github.io/<repo>/`.
    Every later push to `main` redeploys automatically.
-
-## TODO before launch
-
-- [ ] Build the Canva bubble template (3.8 × 1.7 in pages) and export
-      `q1.png`–`q9.png` plus the `-a` answer versions into `assets/questions/`
-- [ ] Drop remaining assets into `assets/` (exact filenames in ARCHITECTURE.md)
-- [ ] Write `js/seed.js`, `js/generator.js`, `js/render.js`, `js/main.js`
-- [ ] Fine-tune star coordinates in `data/locations.json` against the real map art
-- [ ] Print-compare `hunt.html` against `Examples&Details/Example1.pdf`
