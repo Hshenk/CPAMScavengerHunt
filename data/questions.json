@@ -63,6 +63,55 @@
       "category": "history",
       "locationId": "gallery-2",
       "answer": "heart, wings, propeller"
+    },
+    {
+      "id": 10,
+      "title": "Airmail — two things worn by airmail pilots",
+      "category": "history",
+      "locationId": "main-gallery-jn",
+      "answer": "Scarf, Goggles, Jacket, Boots, Mask, or Gloves"
+    },
+    {
+      "id": 11,
+      "title": "Wright B — what material?",
+      "category": "planes",
+      "locationId": "main-gallery-wb",
+      "answer": "Spruce Wood, Canvas, Bicycle Parts"
+    },
+    {
+      "id": 12,
+      "title": "The Wright Family — Wright brother's sister",
+      "category": "people",
+      "locationId": "main-gallery-wb",
+      "answer": "Katherine Wright"
+    },
+    {
+      "id": 13,
+      "title": "Lobby — cardboard plane",
+      "category": "planes",
+      "locationId": "lobby",
+      "answer": "Curtiss JN-4D 'Jenny'"
+    },
+    {
+      "id": 14,
+      "title": "Flag — how many stars were on the flag?",
+      "category": "history",
+      "locationId": "main-gallery-wb",
+      "answer": "46"
+    },
+    {
+      "id": 15,
+      "title": "North Pole — first flight to the North Pole",
+      "category": "people",
+      "locationId": "taylorcraft",
+      "answer": "Gus McLeod"
+    },
+    {
+      "id": 16,
+      "title": "Columbia Air Center — another name for the Columbia Air Center",
+      "category": "history",
+      "locationId": "gallery-1",
+      "answer": "Riverside or Croom Airfield"
     }
   ]
 }

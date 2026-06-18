@@ -67,10 +67,7 @@ brace**, then paste and fill in your own block before the final `]`:
 - `category` — one of the categories listed at the top of the same file
   (currently: `history`, `planes`, `people`, `science`).
 - `locationId` — where in the museum the answer is found; this controls the
-  star on the hint map. Valid names are in `data/locations.json` (currently:
-  `lobby`, `front-desk`, `gift-shop`, `main-gallery-west`, `main-gallery-center`,
-  `main-gallery-east`, `gallery-1`, `flight-school`, `gallery-2`,
-  `special-exhibition`).
+  star on the hint map. Valid names are in `data/locations.json`
 - `answer` — for museum records and the builder; the printed answer key uses
   your `q10-a.png` image.
 

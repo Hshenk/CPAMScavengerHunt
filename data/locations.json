@@ -9,5 +9,6 @@
   { "id": "gallery-1",           "name": "Gallery 1",               "floor": "ground",    "x": 48.0, "y": 63.0 },
   { "id": "flight-school",       "name": "Flight School",           "floor": "ground",    "x": 64.0, "y": 63.0 },
   { "id": "gallery-2",           "name": "Gallery 2",               "floor": "ground",    "x": 84.0, "y": 68.0 },
-  { "id": "special-exhibition",  "name": "Special Exhibition Area", "floor": "mezzanine", "x": 45.0, "y": 72.0 }
+  { "id": "special-exhibition",  "name": "Special Exhibition Area", "floor": "mezzanine", "x": 45.0, "y": 72.0 },
+  { "id": "taylorcraft",  "name": "Taylorcraft", "floor": "ground", "x": 75.0, "y": 37.0 }
 ]
