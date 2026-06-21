@@ -5,6 +5,7 @@
       "id": 1,
       "title": "Kitty Hawk — first flight year",
       "category": "history",
+      "difficulty": "easy",
       "locationId": "lobby",
       "answer": "1903"
     },
@@ -12,6 +13,7 @@
       "id": 2,
       "title": "Wright B — name one control",
       "category": "planes",
+      "difficulty": "easy",
       "locationId": "main-gallery-wb",
       "answer": "elevator, rudder, or wing warping"
     },
@@ -19,6 +21,7 @@
       "id": 3,
       "title": "Jenny — first African American female pilot",
       "category": "people",
+      "difficulty": "easy",
       "locationId": "main-gallery-jn",
       "answer": "Bessie Coleman"
     },
@@ -26,6 +29,7 @@
       "id": 4,
       "title": "Berliner — what type of aircraft?",
       "category": "planes",
+      "difficulty": "easy",
       "locationId": "main-gallery-br",
       "answer": "helicopter"
     },
@@ -33,6 +37,7 @@
       "id": 5,
       "title": "Propellers — which force of flight?",
       "category": "science",
+      "difficulty": "easy",
       "locationId": "flight-school",
       "answer": "thrust"
     },
@@ -40,6 +45,7 @@
       "id": 6,
       "title": "Ercoupe — how does Jessica Cox steer?",
       "category": "people",
+      "difficulty": "easy",
       "locationId": "main-gallery-erco",
       "answer": "her feet"
     },
@@ -47,6 +53,7 @@
       "id": 7,
       "title": "Columbia Air Center — where John Greene learned to fly",
       "category": "people",
+      "difficulty": "easy",
       "locationId": "gallery-1",
       "answer": "Boston"
     },
@@ -54,6 +61,7 @@
       "id": 8,
       "title": "Lakeland exhibit — famous train line",
       "category": "history",
+      "difficulty": "easy",
       "locationId": "special-exhibition",
       "answer": "Baltimore & Ohio Railroad"
     },
@@ -61,6 +69,7 @@
       "id": 9,
       "title": "Latinas in Aviation — three parts of the LIA logo",
       "category": "history",
+      "difficulty": "easy",
       "locationId": "gallery-2",
       "answer": "heart, wings, propeller"
     },
@@ -68,6 +77,7 @@
       "id": 10,
       "title": "Airmail — two things worn by airmail pilots",
       "category": "history",
+      "difficulty": "easy",
       "locationId": "main-gallery-jn",
       "answer": "Scarf, Goggles, Jacket, Boots, Mask, or Gloves"
     },
@@ -75,6 +85,7 @@
       "id": 11,
       "title": "Wright B — what material?",
       "category": "planes",
+      "difficulty": "easy",
       "locationId": "main-gallery-wb",
       "answer": "Spruce Wood, Canvas, Bicycle Parts"
     },
@@ -82,6 +93,7 @@
       "id": 12,
       "title": "The Wright Family — Wright brother's sister",
       "category": "people",
+      "difficulty": "easy",
       "locationId": "main-gallery-wb",
       "answer": "Katherine Wright"
     },
@@ -89,6 +101,7 @@
       "id": 13,
       "title": "Lobby — cardboard plane",
       "category": "planes",
+      "difficulty": "easy",
       "locationId": "lobby",
       "answer": "Curtiss JN-4D 'Jenny'"
     },
@@ -96,6 +109,7 @@
       "id": 14,
       "title": "Flag — how many stars were on the flag?",
       "category": "history",
+      "difficulty": "easy",
       "locationId": "main-gallery-wb",
       "answer": "46"
     },
@@ -103,6 +117,7 @@
       "id": 15,
       "title": "North Pole — first flight to the North Pole",
       "category": "people",
+      "difficulty": "easy",
       "locationId": "sportscopter",
       "answer": "Gus McLeod"
     },
@@ -110,6 +125,7 @@
       "id": 16,
       "title": "Columbia Air Center — another name for the Columbia Air Center",
       "category": "history",
+      "difficulty": "easy",
       "locationId": "gallery-1",
       "answer": "Riverside or Croom Airfield"
     }

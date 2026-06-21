@@ -57,6 +57,7 @@ brace**, then paste and fill in your own block before the final `]`:
       "id": 10,
       "title": "Short label shown in the hunt builder",
       "category": "history",
+      "difficulty": "easy",
       "locationId": "gallery-1",
       "answer": "the plain-text answer, for reference"
     }
@@ -66,10 +67,20 @@ brace**, then paste and fill in your own block before the final `]`:
 - `title` — a short label so people building hunts know what the question is.
 - `category` — one of the categories listed at the top of the same file
   (currently: `history`, `planes`, `people`, `science`).
+- `difficulty` — how hard the question is: one of the `id`s in
+  `data/age-ranges.json` (currently `easy`, `medium`, `hard`). This sets the
+  "Recommended for ages …" line: a hunt is rated for the **hardest** question it
+  contains, so one `hard` question makes the whole sheet read as the older range.
 - `locationId` — where in the museum the answer is found; this controls the
   star on the hint map. Valid names are in `data/locations.json`
 - `answer` — for museum records and the builder; the printed answer key uses
   your `q10-a.png` image.
+
+> **Want a new difficulty tier or different age ranges?** Edit
+> `data/age-ranges.json`: each entry is `{ "id", "name", "range", "level" }`.
+> `range` is the text printed on the hunt (e.g. `"8–12"`), `name` is the builder
+> tag label, and `level` orders them (bigger = harder). Keep the `level` numbers
+> distinct.
 
 **Careful with commas:** every `{ … }` block is separated from the next by a
 comma, but the *last* block has no comma after it. If the website's builder page

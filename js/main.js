@@ -25,8 +25,13 @@ async function initHuntPage(page) {
     const code = new URLSearchParams(location.search).get("code");
     const ids = code ? decodeHunt(code) : null; // null if missing or malformed
 
-    // load master question list
-    const data = await fetch("data/questions.json").then(r => r.json());
+    // load master question list and age ranges
+    const [data, ranges] = await Promise.all([
+        fetch("data/questions.json").then(r => r.json()),
+        fetch("data/age-ranges.json").then(r => r.json()),
+    ]);
+    
+
 
     // Map id -> question object
     const byId = new Map(data.questions.map(q => [q.id, q]));
@@ -41,6 +46,7 @@ async function initHuntPage(page) {
 
     //Rebuild the questions in the code's exact order
     const questions = ids.map(id => byId.get(id));
+    
 
     renderHunt(questions, page === "answers");
     if (page === "hunt") {
@@ -54,6 +60,7 @@ async function initHuntPage(page) {
     setText("hunt-code", canonical);
     setText("hunt-code-map", canonical);
     setText("toolbar-code-value", canonical);
+    setText("age-rec", `Recommended for ages ${recommendedAgeRange(questions, ranges)}`);
 
     const linkId = page === "hunt" ? "answers-link" : "hunt-link";
     const target = page === "hunt" ? "answers.html" : "hunt.html";
@@ -65,15 +72,16 @@ async function initHuntPage(page) {
 async function initBuilderPage() {
     // Fetch both files at once
     // Promise.all waits for both to finish.
-    const [questionsData, presetsData] = await Promise.all([
+    const [questionsData, presetsData, ranges] = await Promise.all([
         fetch("data/questions.json").then(r => r.json()),
         fetch("data/presets.json").then(r => r.json()),
+        fetch("data/age-ranges.json").then(r => r.json()),
     ]);
     const pool = questionsData.questions;
 
     buildPresets(presetsData.presets);
     buildCategoryControls(questionsData.categories, pool);
-    buildQuestionList(pool);
+    buildQuestionList(pool, ranges);
     wireGenerate(pool);
     wireLoadCode(pool);
     updateSummary(); // set the initial "0 questions" line and button state
@@ -115,9 +123,10 @@ function buildCategoryControls(categories, pool) {
     }
 }
 
-function buildQuestionList(pool) {
+function buildQuestionList(pool, ranges) {
     const list = document.getElementById("question-list");
     const template = document.getElementById("question-template");
+    const rangeByID = new Map(ranges.map(r => [r.id, r]));
 
     // Sort the list by category 
     const sorted = [...pool].sort((a, b) => 
@@ -128,10 +137,12 @@ function buildQuestionList(pool) {
     for (const q of sorted) {
         const fragment = template.content.cloneNode(true);
         const checkbox = fragment.querySelector(".question-pin");
+        const tier = rangeByID.get(q.difficulty);
         checkbox.value = q.id;
         checkbox.addEventListener("change", updateSummary);
         fragment.querySelector(".question-find").textContent = q.title;
         fragment.querySelector(".question-category").textContent = q.category;
+        fragment.querySelector(".question-difficulty").textContent = tier ? tier.name : q.difficulty;
         list.appendChild(fragment);
     }
 }
@@ -214,4 +225,15 @@ function wireLoadCode(pool) {
             error.hidden = false;
         }
     });
+}
+
+// Returns the hardest difficulty range in the question list
+function recommendedAgeRange(questions, ranges) {
+    const byId = new Map(ranges.map(r => [r.id, r]));
+    let top = null;
+    for (const q of questions) {
+        const tier = byId.get(q.difficulty);
+        if (tier && (top === null || tier.level > top.level)) top = tier;
+    }
+    return top ? top.range : "6-10";
 }
