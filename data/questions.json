@@ -4,73 +4,91 @@
     {
       "id": 1,
       "title": "Kitty Hawk — first flight year",
+      "titleEs": "Kitty Hawk — año del primer vuelo",
       "category": "history",
       "difficulty": "easy",
       "locationId": "lobby",
+      "hasSpanish": true,
       "answer": "1903"
     },
     {
       "id": 2,
       "title": "Wright B — name one control",
+      "titleEs": "Wright B — nombra un control",
       "category": "planes",
       "difficulty": "easy",
       "locationId": "main-gallery-wb",
+      "hasSpanish": true,
       "answer": "elevator, rudder, or wing warping"
     },
     {
       "id": 3,
       "title": "Jenny — first African American female pilot",
+      "titleEs": "Jenny — primera piloto afroamericana",
       "category": "people",
       "difficulty": "easy",
       "locationId": "main-gallery-jn",
+      "hasSpanish": true,
       "answer": "Bessie Coleman"
     },
     {
       "id": 4,
       "title": "Berliner — what type of aircraft?",
+      "titleEs": "Berliner — ¿qué tipo de aeronave es?",
       "category": "planes",
       "difficulty": "easy",
       "locationId": "main-gallery-br",
+      "hasSpanish": true,
       "answer": "helicopter"
     },
     {
       "id": 5,
       "title": "Propellers — which force of flight?",
+      "titleEs": "Hélices — ¿qué fuerza del vuelo crean?",
       "category": "science",
       "difficulty": "easy",
       "locationId": "flight-school",
+      "hasSpanish": true,
       "answer": "thrust"
     },
     {
       "id": 6,
       "title": "Ercoupe — how does Jessica Cox steer?",
+      "titleEs": "Ercoupe — ¿cómo pilota Jessica Cox?",
       "category": "people",
       "difficulty": "easy",
       "locationId": "main-gallery-erco",
+      "hasSpanish": true,
       "answer": "her feet"
     },
     {
       "id": 7,
       "title": "Columbia Air Center — where John Greene learned to fly",
+      "titleEs": "Columbia Air Center — dónde aprendió a volar John Greene",
       "category": "people",
       "difficulty": "easy",
       "locationId": "gallery-1",
+      "hasSpanish": true,
       "answer": "Boston"
     },
     {
       "id": 8,
       "title": "Lakeland exhibit — famous train line",
+      "titleEs": "Exhibición de Lakeland — famosa línea de tren",
       "category": "history",
       "difficulty": "easy",
       "locationId": "special-exhibition",
+      "hasSpanish": true,
       "answer": "Baltimore & Ohio Railroad"
     },
     {
       "id": 9,
       "title": "Latinas in Aviation — three parts of the LIA logo",
+      "titleEs": "Latinas in Aviation — tres partes del logotipo de LIA",
       "category": "history",
       "difficulty": "easy",
       "locationId": "gallery-2",
+      "hasSpanish": true,
       "answer": "heart, wings, propeller"
     },
     {
@@ -79,6 +97,7 @@
       "category": "history",
       "difficulty": "easy",
       "locationId": "main-gallery-jn",
+      "hasSpanish": false,
       "answer": "Scarf, Goggles, Jacket, Boots, Mask, or Gloves"
     },
     {
@@ -87,6 +106,7 @@
       "category": "planes",
       "difficulty": "easy",
       "locationId": "main-gallery-wb",
+      "hasSpanish": false,
       "answer": "Spruce Wood, Canvas, Bicycle Parts"
     },
     {
@@ -95,6 +115,7 @@
       "category": "people",
       "difficulty": "easy",
       "locationId": "main-gallery-wb",
+      "hasSpanish": false,
       "answer": "Katherine Wright"
     },
     {
@@ -103,6 +124,7 @@
       "category": "planes",
       "difficulty": "easy",
       "locationId": "lobby",
+      "hasSpanish": false,
       "answer": "Curtiss JN-4D 'Jenny'"
     },
     {
@@ -111,6 +133,7 @@
       "category": "history",
       "difficulty": "easy",
       "locationId": "main-gallery-wb",
+      "hasSpanish": false,
       "answer": "46"
     },
     {
@@ -119,6 +142,7 @@
       "category": "people",
       "difficulty": "easy",
       "locationId": "sportscopter",
+      "hasSpanish": false,
       "answer": "Gus McLeod"
     },
     {
@@ -127,6 +151,7 @@
       "category": "history",
       "difficulty": "medium",
       "locationId": "gallery-1",
+      "hasSpanish": false,
       "answer": "Riverside or Croom Airfield"
     }
   ]

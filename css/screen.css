@@ -48,6 +48,25 @@ body {
 }
 .site-header .tagline { margin: 0.4rem 0 0; font-weight: 700; }
 
+/* Language switch, top-right of the header */
+.language-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.language-row select {
+  font: inherit;
+  border: none;
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  color: var(--brown);
+  background: #fff;
+  cursor: pointer;
+}
+
 main {
   max-width: 880px;
   margin: 0 auto;

@@ -12,10 +12,14 @@
 <body data-page="answers">
 
   <div class="toolbar">
-    <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
-    <a id="hunt-link" class="secondary" href="hunt.html">View Hunt</a>
-    <a class="secondary" href="index.html">← Back to Builder</a>
-    <span class="toolbar-code">Code: <span id="toolbar-code-value">CPAM1-EXAMPLE</span></span>
+    <button type="button" onclick="window.print()" data-i18n="print">🖨 Print / Save as PDF</button>
+    <a id="hunt-link" class="secondary" href="hunt.html" data-i18n="view-hunt">View Hunt</a>
+    <a id="builder-link" class="secondary" href="index.html" data-i18n="back-builder">← Back to Builder</a>
+    <select id="language-select">
+      <option value="en">English</option>
+      <option value="es">Español</option>
+    </select>
+    <span class="toolbar-code"><span data-i18n="code-label">Code:</span> <span id="toolbar-code-value">CPAM1-EXAMPLE</span></span>
   </div>
 
   <!-- HARDCODED SAMPLE — render.js clears the columns and clones
@@ -26,6 +30,7 @@
       <div class="bubble-col" id="bubbles-left">
         <header class="hunt-header">
           <img src="assets/header-lockup.png"
+               data-src-es="assets/header-lockup-spanish.png"
                alt="College Park Aviation Museum — Scavenger Hunt">
           <p class="ages" id="age-rec">Recommended for ages 6–10</p>
         </header>
@@ -92,9 +97,9 @@
       <img src="assets/logo-museum.png" alt="College Park Aviation Museum">
       <img src="assets/logo-smithsonian.png" alt="Smithsonian Affiliate">
       <span class="footer-spacer"></span>
-      <span class="hunt-code">Hunt Code: <span id="hunt-code">CPAM1-EXAMPLE</span></span>
+      <span class="hunt-code"><span data-i18n="hunt-code-label">Hunt Code:</span> <span id="hunt-code">CPAM1-EXAMPLE</span></span>
       <span class="footer-spacer"></span>
-      <img src="assets/logo-parks.png" alt="M-NCPPC Parks and Recreation">
+      <img src="assets/logo-parks.png" data-src-es="assets/logo-parks-spanish.png" alt="M-NCPPC Parks and Recreation">
     </footer>
   </section>
 

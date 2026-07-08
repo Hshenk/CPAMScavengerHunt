@@ -1,4 +1,4 @@
-export function renderHunt(questions, showAnswers) {
+export function renderHunt(questions, showAnswers, lang) {
     const left = document.getElementById("bubbles-left");
     const right = document.getElementById("bubbles-right");
 
@@ -16,8 +16,10 @@ export function renderHunt(questions, showAnswers) {
 
         const img = bubble.querySelector(".bubble-img");
         const suffix = showAnswers ? "-a" : ""; // adds an 'a' if we are showing answers
-        img.src = `assets/questions/q${q.id}${suffix}.png`;
-        img.alt = q.title; // If we can't find an image with that idea, just show text
+        const useSpanish = lang === "es" && q.hasSpanish;
+        const folder = useSpanish ? "spanish/s-" : "";
+        img.src = `assets/questions/${folder}q${q.id}${suffix}.png`;
+        img.alt = (lang === "es" && q.titleEs) || q.title; // If we can't find an image with that idea, just show text
 
         const column = index % 2 === 0 ? right : left; // decides what place the bubble is in based on its index
         column.appendChild(fragment); // Moves the bubble out of the fragment and into the page

@@ -11,10 +11,14 @@
 
   <!-- Screen-only controls; hidden by print CSS -->
   <div class="toolbar">
-    <button type="button" onclick="window.print()">🖨 Print / Save as PDF</button>
-    <a id="answers-link" class="secondary" href="answers.html">View Answer Sheet</a>
-    <a class="secondary" href="index.html">← Back to Builder</a>
-    <span class="toolbar-code">Code: <span id="toolbar-code-value">CPAM1-EXAMPLE</span></span>
+    <button type="button" onclick="window.print()" data-i18n="print">🖨 Print / Save as PDF</button>
+    <a id="answers-link" class="secondary" href="answers.html" data-i18n="view-answers">View Answer Sheet</a>
+    <a id="builder-link" class="secondary" href="index.html" data-i18n="back-builder">← Back to Builder</a>
+    <select id="language-select">
+      <option value="en">English</option>
+      <option value="es">Español</option>
+    </select>
+    <span class="toolbar-code"><span data-i18n="code-label">Code:</span> <span id="toolbar-code-value">CPAM1-EXAMPLE</span></span>
   </div>
 
   <!-- ====================================================================
@@ -35,6 +39,7 @@
       <div class="bubble-col" id="bubbles-left">
         <header class="hunt-header">
           <img src="assets/header-lockup.png"
+               data-src-es="assets/header-lockup-spanish.png"
                alt="College Park Aviation Museum — Scavenger Hunt">
           <p class="ages" id="age-rec">Recommended for ages 6–10</p>
         </header>
@@ -101,9 +106,9 @@
       <img src="assets/logo-museum.png" alt="College Park Aviation Museum">
       <img src="assets/logo-smithsonian.png" alt="Smithsonian Affiliate">
       <span class="footer-spacer"></span>
-      <span class="hunt-code">Hunt Code: <span id="hunt-code">CPAM1-EXAMPLE</span></span>
+      <span class="hunt-code"><span data-i18n="hunt-code-label">Hunt Code:</span> <span id="hunt-code">CPAM1-EXAMPLE</span></span>
       <span class="footer-spacer"></span>
-      <img src="assets/logo-parks.png" alt="M-NCPPC Parks and Recreation">
+      <img src="assets/logo-parks.png" data-src-es="assets/logo-parks-spanish.png" alt="M-NCPPC Parks and Recreation">
     </footer>
   </section>
 
@@ -115,24 +120,24 @@
        coordinates inside the matching .map-floor[data-floor] container.
        ==================================================================== -->
   <section class="sheet map-page">
-    <h1 class="map-title stamp">Want a Hint?</h1>
-    <p class="map-subtitle">Here are a few places to look</p>
+    <h1 class="map-title stamp" data-i18n="map-title">Want a Hint?</h1>
+    <p class="map-subtitle" data-i18n="map-subtitle">Here are a few places to look</p>
 
     <!-- Stars are created by render.js from data/locations.json — positions
          (x/y) and the floor each belongs to live there now. data-floor lets
          render.js drop each star into the matching map. -->
-    <h2 class="floor-label stamp">Ground Floor</h2>
+    <h2 class="floor-label stamp" data-i18n="floor-ground">Ground Floor</h2>
     <div class="map-floor ground" data-floor="ground">
-      <img src="assets/map-ground.png" alt="Ground floor map">
+      <img src="assets/map-ground.png" data-src-es="assets/map-ground-spanish.png" alt="Ground floor map">
     </div>
 
-    <h2 class="floor-label stamp">Mezzanine — Second Floor</h2>
+    <h2 class="floor-label stamp" data-i18n="floor-mezzanine">Mezzanine — Second Floor</h2>
     <div class="map-floor mezzanine" data-floor="mezzanine">
-      <img src="assets/map-mezzanine.png" alt="Mezzanine map">
+      <img src="assets/map-mezzanine.png" data-src-es="assets/map-mezzanine-spanish.png" alt="Mezzanine map">
     </div>
 
     <div class="name-row">
-      <span class="stamp">Name</span>
+      <span class="stamp" data-i18n="name">Name</span>
       <span class="name-line"></span>
     </div>
 
@@ -140,9 +145,9 @@
       <img src="assets/logo-museum.png" alt="College Park Aviation Museum">
       <img src="assets/logo-smithsonian.png" alt="Smithsonian Affiliate">
       <span class="footer-spacer"></span>
-      <span class="hunt-code">Hunt Code: <span id="hunt-code-map">CPAM1-EXAMPLE</span></span>
+      <span class="hunt-code"><span data-i18n="hunt-code-label">Hunt Code:</span> <span id="hunt-code-map">CPAM1-EXAMPLE</span></span>
       <span class="footer-spacer"></span>
-      <img src="assets/logo-parks.png" alt="M-NCPPC Parks and Recreation">
+      <img src="assets/logo-parks.png" data-src-es="assets/logo-parks-spanish.png" alt="M-NCPPC Parks and Recreation">
     </footer>
   </section>
 

@@ -91,6 +91,16 @@ body {
 .toolbar a.secondary,
 .toolbar button.secondary { background: var(--brown); }
 .toolbar .toolbar-code { margin-left: auto; font-weight: 700; color: var(--brown); }
+.toolbar select {
+  font: inherit;
+  font-weight: 700;
+  color: var(--brown);
+  background: #fff;
+  border: 2px solid var(--blue);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
 
 /* ---- The printable sheet ---- */
 .sheet {

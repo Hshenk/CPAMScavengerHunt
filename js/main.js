@@ -2,6 +2,55 @@ import { encodeHunt, decodeHunt } from "./seed.js";
 import { generateHunt } from "./generator.js";
 import { renderHunt, renderMap } from "./render.js";
 
+
+// --- Language ---
+const params = new URLSearchParams(location.search);
+const lang = params.get("lang") === "es" ? "es" : "en";
+
+const strings = await fetch("data/strings.json").then( r => r.json());
+
+function t(key) {
+    return strings[lang][key] ?? strings.en[key] ?? key;
+}
+
+// Checks if there is a spanish title, returns question.ES or question.title if not
+function localized(obj, field) {
+    return (lang === "es" && obj[field + "Es"]) || obj[field];
+}
+
+// Adds lang=es to URL when in spanish
+function withLang(url) {
+    return lang === "es" ? `${url}${url.includes("?") ? "&"
+        : "?"}lang=es` : url;
+}
+
+/** Swap all the static text to the current language */
+function applyLanguage() {
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        el.textContent = t(el.dataset.i18n);
+    });
+
+    if (lang === "es") {
+        document.querySelectorAll("[data-src-es]").forEach(
+            img => {
+                img.src = img.dataset.srcEs;
+        });
+    }
+
+    const select = document.getElementById("language-select");
+    if (select) {
+        select.value = lang;
+        select.addEventListener("change", () => {
+            params.set("lang", select.value);
+            location.search = params.toString();
+        });
+    }
+}
+applyLanguage();
+
+
 // check what page we're on
 const page = document.body.dataset.page;
 
@@ -38,9 +87,8 @@ async function initHuntPage(page) {
 
     // Valid only if the code decoded and every id is real
     if (!ids || !ids.every(id => byId.has(id))) {
-        document.body.innerHTML = 
-        "<p style='padding:2rem;font:bold 1.2rem sans-serif'>" + 
-        "Sorry - that hunt code isn't valid. Please check it and try again.</p>";
+        document.body.innerHTML =
+        `<p style='padding:2rem;font:bold 1.2rem sans-serif'>${t("invalid-code")}</p>`;
         return; // Nothing else to render so we exit
     }
 
@@ -48,7 +96,7 @@ async function initHuntPage(page) {
     const questions = ids.map(id => byId.get(id));
     
 
-    renderHunt(questions, page === "answers");
+    renderHunt(questions, page === "answers", lang);
     if (page === "hunt") {
         const locations = await
         fetch("data/locations.json").then(r => r.json());
@@ -60,12 +108,14 @@ async function initHuntPage(page) {
     setText("hunt-code", canonical);
     setText("hunt-code-map", canonical);
     setText("toolbar-code-value", canonical);
-    setText("age-rec", `Recommended for ages ${recommendedAgeRange(questions, ranges)}`);
+    setText("age-rec", t("ages").replace("{range}", recommendedAgeRange(questions, ranges)));
 
     const linkId = page === "hunt" ? "answers-link" : "hunt-link";
     const target = page === "hunt" ? "answers.html" : "hunt.html";
     const link = document.getElementById(linkId);
-    if (link) link.href = `${target}?code=${canonical}`;
+    if (link) link.href = withLang(`${target}?code=${canonical}`);
+    const builderLink = document.getElementById("builder-link");
+    if (builderLink) builderLink.href = withLang("index.html");
 }
 
 
@@ -77,9 +127,14 @@ async function initBuilderPage() {
         fetch("data/presets.json").then(r => r.json()),
         fetch("data/age-ranges.json").then(r => r.json()),
     ]);
-    const pool = questionsData.questions;
+    const pool = lang === "es"
+        ? questionsData.questions.filter(q => q.hasSpanish)
+        : questionsData.questions;
+    const poolIds = new Set(pool.map(q => q.id));
+    const presets = presetsData.presets.filter(p =>
+        p.questionIds.every(id => poolIds.has(id)));
 
-    buildPresets(presetsData.presets);
+    buildPresets(presets);
     buildCategoryControls(questionsData.categories, pool);
     buildQuestionList(pool, ranges);
     wireGenerate(pool);
@@ -92,12 +147,12 @@ function buildPresets(presets) {
     const template = document.getElementById("preset-template");
     for (const preset of presets) {
         const fragment = template.content.cloneNode(true);
-        fragment.querySelector(".preset-name").textContent = preset.name;
-        fragment.querySelector(".preset-description").textContent = preset.description;
+        fragment.querySelector(".preset-name").textContent = localized(preset, "name");
+        fragment.querySelector(".preset-description").textContent = localized(preset, "description");
         fragment.querySelector(".preset-count").textContent = `${preset.questionIds.length} questions`;
         // Clicking a preset jumps straight to its hunt
         fragment.querySelector(".preset-card").addEventListener("click", () => {
-            location.href = `hunt.html?code=${encodeHunt(preset.questionIds)}`;
+            location.href = withLang(`hunt.html?code=${encodeHunt(preset.questionIds)}`);
         });
         list.appendChild(fragment);
     }
@@ -111,7 +166,7 @@ function buildCategoryControls(categories, pool) {
     for (const category of categories) {
         const available = pool.filter(q => q.category === category).length;
         const fragment = template.content.cloneNode(true);
-        fragment.querySelector(".category-name").textContent = category;
+        fragment.querySelector(".category-name").textContent = strings[lang].categories[category] ?? category;
         const input = fragment.querySelector(".category-count");
         input.dataset.category = category;
         input.max = available;
@@ -137,12 +192,13 @@ function buildQuestionList(pool, ranges) {
     for (const q of sorted) {
         const fragment = template.content.cloneNode(true);
         const checkbox = fragment.querySelector(".question-pin");
+        checkbox.dataset.category = q.category;   // raw id for logic, independent of display
         const tier = rangeByID.get(q.difficulty);
         checkbox.value = q.id;
         checkbox.addEventListener("change", updateSummary);
-        fragment.querySelector(".question-find").textContent = q.title;
-        fragment.querySelector(".question-category").textContent = q.category;
-        fragment.querySelector(".question-difficulty").textContent = tier ? tier.name : q.difficulty;
+        fragment.querySelector(".question-category").textContent = strings[lang].categories[q.category] ?? q.category;
+        fragment.querySelector(".question-difficulty").textContent = strings[lang].difficulties[q.difficulty] ?? q.difficulty;
+        fragment.querySelector(".question-find").textContent = localized(q, "title");
         list.appendChild(fragment);
     }
 }
@@ -172,7 +228,7 @@ function updateSummary() {
     // Calculate how many pinned we have per category
     const pinnedPerCat = {};
     document.querySelectorAll(".question-pin:checked").forEach(box =>{
-        const cat = box.closest(".question-row").querySelector(".question-category").textContent;
+        const cat = box.dataset.category;
         pinnedPerCat[cat] = (pinnedPerCat[cat] || 0) + 1;
     });
 
@@ -190,10 +246,14 @@ function updateSummary() {
 
     const summary = document.getElementById("selection-summary");
     const button = document.getElementById("generate-btn");
-    summary.textContent = `${pinned} pinned + ${random} random = ${total} questions`;
+    summary.textContent = t("summary")
+        .replace("{pinned}", pinned)
+        .replace("{random}", random)
+        .replace("{total}", total);
+
 
     if (total > 9) {
-        summary.textContent += " too many! The page fits only 9 questions.";
+        summary.textContent += t("summary-too-many");
         button.disabled = true;
     } else {
         button.disabled = total === 0;
@@ -208,7 +268,7 @@ function wireGenerate(pool) {
             categoryCounts: getCategoryCounts(),
             pool,
         });
-        location.href = `hunt.html?code=${encodeHunt(ids)}`;
+        location.href = withLang(`hunt.html?code=${encodeHunt(ids)}`);
     });
 }
 
@@ -220,7 +280,7 @@ function wireLoadCode(pool) {
     document.getElementById("load-code-btn").addEventListener("click", () => {
         const ids = decodeHunt(input.value);
         if (ids && ids.every(id => validIds.has(id))) {
-            location.href = `hunt.html?code=${encodeHunt(ids)}`;
+            location.href = withLang(`hunt.html?code=${encodeHunt(ids)}`);
         } else {
             error.hidden = false;
         }

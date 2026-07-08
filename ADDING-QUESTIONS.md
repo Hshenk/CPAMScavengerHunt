@@ -68,9 +68,13 @@ brace**, then paste and fill in your own block before the final `]`:
 - `category` — one of the categories listed at the top of the same file
   (currently: `history`, `planes`, `people`, `science`).
 - `difficulty` — how hard the question is: one of the `id`s in
-  `data/age-ranges.json` (currently `easy`, `medium`, `hard`). This sets the
-  "Recommended for ages …" line: a hunt is rated for the **hardest** question it
-  contains, so one `hard` question makes the whole sheet read as the older range.
+  `data/age-ranges.json` (currently `easy`, `medium`, `hard`, `very hard`). This
+  sets the "Recommended for ages …" line: a hunt is rated for the **hardest**
+  question it contains, so one `hard` question makes the whole sheet read as the
+  older range.
+- `hasSpanish` — `true` if you've also made the Spanish version (see below),
+  otherwise `false`. Questions marked `false` simply don't appear when someone
+  builds a hunt in Spanish.
 - `locationId` — where in the museum the answer is found; this controls the
   star on the hint map. Valid names are in `data/locations.json`
 - `answer` — for museum records and the builder; the printed answer key uses
@@ -97,6 +101,32 @@ Paste the whole file into <https://jsonlint.com> to find the exact spot.
    - the map star appears in the right place.
 3. Done — publish/commit the three changed items (`q10.png`, `q10-a.png`,
    `questions.json`) the usual way for this project.
+
+## Adding a Spanish version of a question
+
+The website can print hunts in Spanish. A question appears in Spanish mode once
+it has Spanish artwork:
+
+1. In the Canva file, duplicate the question's two pages and translate the text
+   (same size, same rules: transparent background, top-left corner clear).
+2. Export both with **Transparent background**, named with an `s-` prefix:
+   `s-q10.png` and `s-q10-a.png`.
+3. Save them into `assets/questions/spanish/` (note: the *plain* English files
+   stay where they were).
+4. In `data/questions.json`, change that question's `"hasSpanish": false` to
+   `true`, and add a Spanish label line right under the English `"title"`:
+
+   ```json
+   "titleEs": "La versión en español del título",
+   ```
+
+   (Without it, the builder's Spanish list shows the English title.)
+5. Check it: switch the builder's language dropdown to Español — the question
+   should now appear in the list, and a hunt containing it should show the
+   Spanish bubble.
+
+A question without a Spanish version is never offered when building in Spanish,
+so there's no rush — translate at your own pace.
 
 ## Retiring a question
 

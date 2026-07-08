@@ -1,0 +1,105 @@
+{
+  "_comment": "UI text for both languages. Keys marked with {range}/{pinned}/{random}/{total}/{n} are templates main.js fills in. SPANISH DRAFTED BY AI — museum staff should proofread before launch.",
+
+  "en": {
+    "site-title": "Scavenger Hunt Builder",
+    "tagline": "College Park Aviation Museum — build a printable hunt in under a minute.",
+    "language-label": "Language:",
+
+    "code-heading": "Have a hunt code?",
+    "code-help": "Codes are printed at the bottom of every hunt. Enter one to rebuild the exact same hunt.",
+    "load-code": "Load Hunt",
+    "code-error": "That code doesn’t look right — check it against the printed sheet.",
+
+    "preset-heading": "Start from a preset",
+    "preset-help": "Ready-made hunts assembled by the museum.",
+    "preset-count": "{n} questions",
+
+    "builder-heading": "Build your own hunt",
+    "step-categories": "1. Random questions per category",
+    "step-handpick": "2. Hand-pick specific questions",
+    "handpick-note": "(optional — these are always included)",
+    "generate": "Generate Hunt ✈",
+    "summary": "{pinned} pinned + {random} random = {total} questions",
+    "summary-too-many": " — too many! The page fits only 9 questions.",
+
+    "print": "🖨 Print / Save as PDF",
+    "view-answers": "View Answer Sheet",
+    "view-hunt": "View Hunt",
+    "back-builder": "← Back to Builder",
+    "code-label": "Code:",
+    "hunt-code-label": "Hunt Code:",
+
+    "ages": "Recommended for ages {range}",
+    "map-title": "Want a Hint?",
+    "map-subtitle": "Here are a few places to look",
+    "floor-ground": "Ground Floor",
+    "floor-mezzanine": "Mezzanine — Second Floor",
+    "name": "Name",
+    "invalid-code": "Sorry — that hunt code isn’t valid. Please check it and try again.",
+
+    "categories": {
+      "history": "history",
+      "planes": "planes",
+      "people": "people",
+      "science": "science"
+    },
+    "difficulties": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard",
+      "very hard": "Very Hard"
+    }
+  },
+
+  "es": {
+    "site-title": "Creador de Búsquedas del Tesoro",
+    "tagline": "Museo de Aviación de College Park — crea una búsqueda imprimible en menos de un minuto.",
+    "language-label": "Idioma:",
+
+    "code-heading": "¿Tienes un código de búsqueda?",
+    "code-help": "Los códigos están impresos en la parte inferior de cada búsqueda. Ingresa uno para recrear exactamente la misma búsqueda.",
+    "load-code": "Cargar búsqueda",
+    "code-error": "Ese código no parece correcto — compáralo con la hoja impresa.",
+
+    "preset-heading": "Comienza con una plantilla",
+    "preset-help": "Búsquedas ya preparadas por el museo.",
+    "preset-count": "{n} preguntas",
+
+    "builder-heading": "Crea tu propia búsqueda",
+    "step-categories": "1. Preguntas al azar por categoría",
+    "step-handpick": "2. Elige preguntas específicas",
+    "handpick-note": "(opcional — siempre se incluyen)",
+    "generate": "Generar búsqueda ✈",
+    "summary": "{pinned} elegidas + {random} al azar = {total} preguntas",
+    "summary-too-many": " — ¡demasiadas! La página solo admite 9 preguntas.",
+
+    "print": "🖨 Imprimir / Guardar como PDF",
+    "view-answers": "Ver hoja de respuestas",
+    "view-hunt": "Ver búsqueda",
+    "back-builder": "← Volver al creador",
+    "code-label": "Código:",
+    "hunt-code-label": "Código de búsqueda:",
+
+    "ages": "Recomendado para edades {range}",
+    "map-title": "¿Quieres una pista?",
+    "map-subtitle": "Aquí hay algunos lugares donde buscar",
+    "floor-ground": "Planta baja",
+    "floor-mezzanine": "Entrepiso — Segundo piso",
+    "name": "Nombre",
+    "invalid-code": "Lo sentimos — ese código de búsqueda no es válido. Por favor verifícalo e inténtalo de nuevo.",
+
+    "categories": {
+      "history": "historia",
+      "planes": "aviones",
+      "people": "personas",
+      "science": "ciencia"
+    },
+    "difficulties": {
+      "easy": "Fácil",
+      "medium": "Medio",
+      "hard": "Difícil",
+      "very hard": "Muy difícil"
+    }
+  }
+}

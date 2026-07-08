@@ -10,8 +10,16 @@
 <body data-page="builder">
 
   <header class="site-header">
-    <h1>Scavenger Hunt Builder</h1>
-    <p class="tagline">College Park Aviation Museum — build a printable hunt in under a minute.</p>
+    <!-- Language switch: main.js reads/writes the ?lang= URL param on change. -->
+    <div class="language-row">
+      <label for="language-select" data-i18n="language-label">Language:</label>
+      <select id="language-select">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
+    <h1 data-i18n="site-title">Scavenger Hunt Builder</h1>
+    <p class="tagline" data-i18n="tagline">College Park Aviation Museum — build a printable hunt in under a minute.</p>
   </header>
 
   <main>
@@ -22,13 +30,13 @@
              if valid, go to hunt.html?code=...; else show #code-error.
          ================================================================ -->
     <section class="card" id="code-section">
-      <h2>Have a hunt code?</h2>
-      <p>Codes are printed at the bottom of every hunt. Enter one to rebuild the exact same hunt.</p>
+      <h2 data-i18n="code-heading">Have a hunt code?</h2>
+      <p data-i18n="code-help">Codes are printed at the bottom of every hunt. Enter one to rebuild the exact same hunt.</p>
       <div class="row">
         <input type="text" id="code-input" placeholder="CPAM1-XXXXX" autocomplete="off">
-        <button type="button" id="load-code-btn">Load Hunt</button>
+        <button type="button" id="load-code-btn" data-i18n="load-code">Load Hunt</button>
       </div>
-      <p class="error" id="code-error" hidden>That code doesn’t look right — check it against the printed sheet.</p>
+      <p class="error" id="code-error" hidden data-i18n="code-error">That code doesn’t look right — check it against the printed sheet.</p>
     </section>
 
     <!-- ================================================================
@@ -38,8 +46,8 @@
              → hunt.html?code=...
          ================================================================ -->
     <section class="card" id="preset-section">
-      <h2>Start from a preset</h2>
-      <p>Ready-made hunts assembled by the museum.</p>
+      <h2 data-i18n="preset-heading">Start from a preset</h2>
+      <p data-i18n="preset-help">Ready-made hunts assembled by the museum.</p>
       <div id="preset-list" class="preset-grid">
         <!-- populated by JS -->
       </div>
@@ -59,21 +67,21 @@
              Warn above 9: only 9 fixed-size bubbles fit the page.
          ================================================================ -->
     <section class="card" id="builder-section">
-      <h2>Build your own hunt</h2>
+      <h2 data-i18n="builder-heading">Build your own hunt</h2>
 
-      <h3>1. Random questions per category</h3>
+      <h3 data-i18n="step-categories">1. Random questions per category</h3>
       <div id="category-controls" class="category-grid">
         <!-- populated by JS -->
       </div>
 
-      <h3>2. Hand-pick specific questions <span class="muted">(optional — these are always included)</span></h3>
+      <h3><span data-i18n="step-handpick">2. Hand-pick specific questions</span> <span class="muted" data-i18n="handpick-note">(optional — these are always included)</span></h3>
       <div id="question-list" class="question-list">
         <!-- populated by JS -->
       </div>
 
       <div class="generate-row">
         <p id="selection-summary" class="muted">0 questions selected</p>
-        <button type="button" id="generate-btn" class="primary">Generate Hunt ✈</button>
+        <button type="button" id="generate-btn" class="primary" data-i18n="generate">Generate Hunt ✈</button>
       </div>
     </section>
 
