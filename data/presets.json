@@ -8,11 +8,46 @@
       "questionIds": [1, 2, 3, 4, 5, 6, 7, 8, 9]
     },
     {
-      "name": "Quick Hunt (5 stops)",
-      "nameEs": "Búsqueda rápida (5 paradas)",
-      "description": "A shorter visit — five questions across the museum.",
-      "descriptionEs": "Una visita más corta — cinco preguntas por todo el museo.",
-      "questionIds": [1, 4, 5, 8, 9]
+      "name": "Science and Technology (Ages 8-12)",
+      "nameEs": "Ciencia y tecnología (edades 8-12)",
+      "description": "Focus on innovation, engineering, and computers.",
+      "descriptionEs": "Enfoque en la innovación, la ingeniería y la informática.",
+      "questionIds": [4, 5, 11, 17, 18, 19, 24, 28]
+    },
+    {
+      "name": "Field of Firsts",
+      "nameEs": "Campo de los Primeros Logros",
+      "description": "Stick to local history with these questions centered around our airport.",
+      "descriptionEs": "Céntrate en la historia local con estas preguntas sobre nuestro aeropuerto.",
+      "questionIds": [2, 4, 10, 11, 23]
+    },
+    {
+      "name": "Black Aviators",
+      "nameEs": "Aviadores Negros",
+      "description": "Questions about the first Black Aviators, the Lakeland Community, and Columbia Air Center.",
+      "descriptionEs": "Preguntas sobre los primeros aviadores negros, la comunidad de Lakeland y el Columbia Air Center.",
+      "questionIds": [3, 7, 8, 15, 16, 22, 26, 27]
+    },
+    {
+      "name": "Women in Aviation",
+      "nameEs": "Mujeres en la aviación",
+      "description": "Discover the contributions made by women in the field of aviation.",
+      "descriptionEs": "Preguntas sobre los primeros aviadores negros, la comunidad de Lakeland y el Columbia Air Center.",
+      "questionIds": [3, 6, 9, 12, 25, 26]
+    },
+    {
+      "name": "The Wright Brothers",
+      "nameEs": "Los hermanos Wright",
+      "description": "A scavenger hunt all about the Wright family and their inventions.",
+      "descriptionEs": "Descubre las contribuciones realizadas por mujeres en el ámbito de la aviación.",
+      "questionIds": [1, 2, 11, 12]
+    },
+    {
+      "name": "Flight in Nature",
+      "nameEs": "El vuelo en la naturaleza",
+      "description": "Learn about animals and plants related to aviation and our museum.",
+      "descriptionEs": "Descubre animales y plantas relacionados con la aviación y nuestro museo.",
+      "questionIds": [20, 21, 22, 23, 27, 28]
     }
   ]
 }

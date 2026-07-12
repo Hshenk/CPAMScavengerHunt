@@ -1,5 +1,5 @@
 {
-  "categories": ["history", "planes", "people", "science"],
+  "categories": ["history", "planes", "people", "science", "nature"],
   "questions": [
     {
       "id": 1,
@@ -138,7 +138,7 @@
     },
     {
       "id": 15,
-      "title": "North Pole — first flight to the North Pole",
+      "title": "North Pole — first open-cockpit flight to the North Pole",
       "category": "people",
       "difficulty": "easy",
       "locationId": "sportscopter",
@@ -153,6 +153,114 @@
       "locationId": "gallery-1",
       "hasSpanish": false,
       "answer": "Riverside or Croom Airfield"
+    },
+    {
+      "id": 17,
+      "title": "Dashboard Instruments — find the name of one dashboard instrument",
+      "category": "science",
+      "difficulty": "medium",
+      "locationId": "flight-school",
+      "hasSpanish": false,
+      "answer": "airspeed indicator, automatic direction finder, turn and slip indicator, heading indicator, variometer, fuel gauge, Nav Com/radio, or altimeter"
+    },
+    {
+      "id": 18,
+      "title": "Vertical Flight — two uses for vertical flight today",
+      "category": "science",
+      "difficulty": "easy",
+      "locationId": "main-gallery-br",
+      "hasSpanish": false,
+      "answer": "filming, art, emergeny medical deliveries, disaster moitoring, agriculture, wildlife and historical conservation"
+    },
+    {
+      "id": 19,
+      "title": "Blind flight — what year was the first blind flight",
+      "category": "history",
+      "difficulty": "medium",
+      "locationId": "gallery-1",
+      "hasSpanish": false,
+      "answer": "1933"
+    },
+    {
+      "id": 20,
+      "title": "Plane Parts — what two parts get their names from birds",
+      "category": "nature",
+      "difficulty": "easy",
+      "locationId": "main-gallery-taylor",
+      "hasSpanish": false,
+      "answer": "Wings and tail"
+    },
+    {
+      "id": 21,
+      "title": "Model Airport - Find an animal in the diorama",
+      "category": "nature",
+      "difficulty": "easy",
+      "locationId": "diorama",
+      "hasSpanish": false,
+      "answer": "Dog"
+    },
+    {
+      "id": 22,
+      "title": "Lakeland Agriculture - What kind of see is the biggest",
+      "category": "nature",
+      "difficulty": "easy",
+      "locationId": "special-exhibition",
+      "hasSpanish": false,
+      "answer": "Squash"
+    },
+    {
+      "id": 23,
+      "title": "College Park Animals - what animals might you see outside",
+      "category": "nature",
+      "difficulty": "easy",
+      "locationId": "main-gallery-taylor",
+      "hasSpanish": false,
+      "answer": "fox"
+    },
+    {
+      "id": 24,
+      "title": "Model Rocket - What model of rocket is on display",
+      "category": "science",
+      "difficulty": "medium",
+      "locationId": "gallery-2",
+      "hasSpanish": false,
+      "answer": "SpaceX Falcon Heavy Rocket"
+    },
+    {
+      "id": 25,
+      "title": "WASP Mascot - What is the name of the WASP mascot",
+      "category": "people",
+      "difficulty": "easy",
+      "locationId": "gallery-2",
+      "hasSpanish": false,
+      "answer": "Fifinella"
+    },
+    {
+      "id": 26,
+      "title": "Columbia Air Center — meet Gladys Otey",
+      "category": "people",
+      "difficulty": "easy",
+      "locationId": "gallery-1",
+      "hasSpanish": false,
+      "answer": "Eloise Butler, Eunice Greene, Frances Pinkett"
+    },
+    {
+      "id": 27,
+      "title": "Columbia Air Center — Johnny Kase’s dog",
+      "category": "nature",
+      "difficulty": "hard",
+      "locationId": "cloud-club",
+      "hasSpanish": false,
+      "answer": "Hawk"
+    },
+    {
+      "id": 28,
+      "title": "Counting Wings - How do we could wings on a plane",
+      "category": "nature",
+      "difficulty": "medium",
+      "locationId": "flight-school",
+      "hasSpanish": false,
+      "answer": "Two Wings"
     }
   ]
 }

@@ -1,6 +1,6 @@
 [
   { "id": "easy",   "name": "Easy",   "range": "6–10",  "level": 1 },
-  { "id": "medium", "name": "Medium", "range": "10–12", "level": 2 },
+  { "id": "medium", "name": "Medium", "range": "8–12", "level": 2 },
   { "id": "hard",   "name": "Hard",   "range": "12+",   "level": 3 },
   { "id": "very hard", "name": "Very Hard", "range": "16+", "level": 4}
 ]
